@@ -1,0 +1,52 @@
+.Header{
+    
+    color: white;
+    
+}
+
+.Header nav{
+    background-color: #ee6e73;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    align-items: center;
+    height: 60px;
+}
+
+.logo-wrapper{
+    margin-left: 150px;
+}
+
+h1{
+    font-weight: 400;
+}
+
+.right-side-wrapper{
+    display: flex;
+    align-items: center;
+    margin-right: 150px;
+    
+}
+.right-side-wrapper h3{
+    margin-left: 30px;
+    
+}
+
+.right-side-wrapper h3.grid-list{
+   font-size: 30px;
+    
+}
+
+input{
+    width: 80%;
+    margin: 20px auto;
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-style: none;
+   border-bottom: 1px solid #bbbbbb;
+   outline: none;
+
+    
+}

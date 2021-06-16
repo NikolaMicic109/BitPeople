@@ -1,7 +1,8 @@
 import "./App.css"
 import Users from "../Users/Users"
 import Header from "../Header/Header"
-import { useEffect, useState, useToggle } from "react"
+import { useEffect, useState, } from "react"
+import Loading from "../Loading/Loading"
 
 
 
@@ -14,11 +15,17 @@ const App = () => {
     const [ref, setRef] = useState(false)
 
     useEffect(() => {
+
+        setData([])
+
         fetch("https://randomuser.me/api/?results=15")
             .then(res => res.json())
             .then(data => {
-                setData(data.results)
-                setFiltered(data.results)
+                setTimeout(() => {
+                    setData(data.results)
+                    setFiltered(data.results)
+                }, 2000)
+
             }
             )
     }, [ref])
@@ -35,7 +42,8 @@ const App = () => {
         <div className="App">
 
             <Header refresh={() => { setRef(!ref) }} onViewChange={() => setGrid(!grid)} data={(arg) => { setSearch(arg) }} />
-            <Users grid={grid} users={filtered} search={search} />
+            { data.length && <Users grid={grid} users={filtered} search={search} />}
+            {!data.length && <Loading />}
 
         </div>
 

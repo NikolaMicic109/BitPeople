@@ -10,7 +10,6 @@ const Header = (props) => {
         props.data(e.target.value)
     }
 
-
     return (
         <div className="Header">
             <nav>
@@ -19,8 +18,8 @@ const Header = (props) => {
                 </div>
 
                 <div className="right-side-wrapper">
-                    <h3 className="refresh">REFRESH</h3>
-                    <h3 className="grid-list">#</h3>
+                    <h3 className="refresh" onClick={props.refresh}>REFRESH</h3>
+                    <h3 className="grid-list" onClick={props.onViewChange}>#</h3>
                 </div>
 
             </nav>

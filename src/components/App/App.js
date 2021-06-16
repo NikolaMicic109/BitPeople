@@ -1,7 +1,7 @@
 import "./App.css"
 import Users from "../Users/Users"
 import Header from "../Header/Header"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useToggle } from "react"
 
 
 
@@ -10,6 +10,8 @@ const App = () => {
     const [data, setData] = useState([])
     const [filtered, setFiltered] = useState([])
     const [search, setSearch] = useState("")
+    const [grid, setGrid] = useState(false)
+    const [ref, setRef] = useState(false)
 
     useEffect(() => {
         fetch("https://randomuser.me/api/?results=15")
@@ -19,7 +21,7 @@ const App = () => {
                 setFiltered(data.results)
             }
             )
-    }, [])
+    }, [ref])
 
     useEffect(() => {
         setFiltered(data.filter(d => (
@@ -32,8 +34,8 @@ const App = () => {
 
         <div className="App">
 
-            <Header data={(arg) => { setSearch(arg) }} />
-            <Users users={filtered} search={search} />
+            <Header refresh={() => { setRef(!ref) }} onViewChange={() => setGrid(!grid)} data={(arg) => { setSearch(arg) }} />
+            <Users grid={grid} users={filtered} search={search} />
 
         </div>
 
